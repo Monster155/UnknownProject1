@@ -1,6 +1,4 @@
-using Progress.Enums;
-
-namespace Progress
+namespace Saving
 {
     public class SaveData
     {

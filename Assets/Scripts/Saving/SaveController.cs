@@ -1,11 +1,10 @@
-using Progress.Enums;
 using UnityEngine;
 
-namespace Progress
+namespace Saving
 {
-    public class ProgressController : MonoBehaviour
+    public class SaveController : MonoBehaviour
     {
-        public static ProgressController Instance;
+        public static SaveController Instance;
 
         private void Awake()
         {

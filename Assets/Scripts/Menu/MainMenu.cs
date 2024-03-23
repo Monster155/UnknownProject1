@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections;
-using Progress;
+﻿using System.Collections;
+using Saving;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,14 +22,14 @@ namespace Menu
             _settingsButton.onClick.AddListener(SettingsButton_OnClick);
             _exitButton.onClick.AddListener(ExitButton_OnClick);
 
-            _continuesButton.interactable = ProgressController.Instance.GetSaveData().Time > 0;
+            _continuesButton.interactable = SaveController.Instance.GetSaveData().Time > 0;
         }
 
         private IEnumerator LoadSceneCoroutine(string sceneName)
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             asyncLoad.allowSceneActivation = false;
-            
+
             // can use anim here or smth else
             yield return null;
 
@@ -40,7 +39,7 @@ namespace Menu
         private void ContinuesButton_OnClick() => StartCoroutine(LoadSceneCoroutine("GameScene"));
         private void StartButton_OnClick()
         {
-            ProgressController.Instance.ClearData();
+            SaveController.Instance.ClearData();
             StartCoroutine(LoadSceneCoroutine("GameScene"));
         }
         private void SettingsButton_OnClick() => _settingsMenu.SetActive(true);

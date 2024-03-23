@@ -15,7 +15,7 @@ namespace Progress
         public ItemState LowBatteryState { get; set; }
         public ItemState HammerState { get; set; }
 
-        public SaveData GetDefault()
+        public static SaveData GetDefault()
         {
             return new SaveData()
             {

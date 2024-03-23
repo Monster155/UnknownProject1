@@ -26,6 +26,9 @@ namespace Progress
         
         public SaveData GetSaveData()
         {
+            if (!PlayerPrefs.HasKey("Time"))
+                return SaveData.GetDefault();
+            
             return new SaveData()
             {
                 Time = PlayerPrefs.GetInt("Time"),
@@ -36,6 +39,11 @@ namespace Progress
                 LowBatteryState = (ItemState)PlayerPrefs.GetInt("LowBatteryState"),
                 HammerState = (ItemState)PlayerPrefs.GetInt("HammerState"),
             };
+        }
+
+        public void ClearData()
+        {
+            Save(SaveData.GetDefault());
         }
 
         private void Save(SaveData data)
